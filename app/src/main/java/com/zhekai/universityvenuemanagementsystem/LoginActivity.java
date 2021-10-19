@@ -13,11 +13,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class LoginActivity extends AppCompatActivity {
 
 
     private EditText username, passcode;
+    static public String UserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (username.getText().toString().equals("admin") && passcode.getText().toString().equals("1234")){
                     Toast.makeText(getApplicationContext(), "Signing In...", Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "Sign In Successfully!");
+                    UserId = username.getText().toString();
                     startActivity(intent);
                 }
                 else{

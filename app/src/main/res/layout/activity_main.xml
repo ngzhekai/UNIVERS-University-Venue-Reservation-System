@@ -61,6 +61,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/viewReservationBtn"
             android:layout_width="145dp"
             android:layout_height="145dp"
             android:layout_rowWeight="1"
@@ -68,6 +69,7 @@
             android:layout_margin="12dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="6dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
