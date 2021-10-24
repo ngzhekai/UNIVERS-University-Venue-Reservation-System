@@ -1,5 +1,7 @@
 package com.zhekai.universityvenuemanagementsystem;
 
+import static com.zhekai.universityvenuemanagementsystem.LoginActivity.UserId;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -109,9 +111,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<Work> getEveryone() {
         List<Work> returnList = new ArrayList<>();
+        String queryString;
+        if (UserId.toString().equals("admin")) {
+            // get data from the database
+            queryString = "SELECT * FROM " + TABLE_NAME;
+        }else{
+            // get data from the database
+            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'";
+        }
 
-        // get data from the database
-        String queryString = "SELECT * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
