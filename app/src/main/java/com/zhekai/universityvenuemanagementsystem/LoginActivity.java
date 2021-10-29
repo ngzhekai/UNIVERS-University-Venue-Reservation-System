@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i(TAG, "Sign In Successfully!");
                     UserId = username.getText().toString();
                     startActivity(intent);
+                    finish();
                 }
                 else if (username.getText().toString().equals("student1") && passcode.getText().toString().equals("1234"))
                 {
@@ -45,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i(TAG, "Sign In Successfully!");
                     UserId = username.getText().toString();
                     startActivity(intent);
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Sign In Failed!", Toast.LENGTH_SHORT).show();

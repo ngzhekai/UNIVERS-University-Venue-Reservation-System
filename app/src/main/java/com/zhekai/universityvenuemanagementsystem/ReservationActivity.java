@@ -64,6 +64,7 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
 
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(intent);
+                finish(); //to prevent user from coming back to this activity when back button is clicked
             }
         });
     }
