@@ -9,9 +9,11 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -20,7 +22,7 @@ import java.util.Calendar;
 public class ReservationActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnDatePicker, btnTimePicker1, btnTimePicker2, btnSubmit;
-    EditText txtDate, txtTime1, txtTime2, phoneNumber, txtVenue;
+    EditText txtDate, txtTime1, txtTime2, phoneNumber;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -28,6 +30,7 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation);
 
+        Spinner venuelist = (Spinner) findViewById(R.id.venueIDList);
         btnDatePicker = (Button) findViewById(R.id.btn_date);
         btnTimePicker1 = (Button) findViewById(R.id.btn_time);
         btnTimePicker2 = (Button) findViewById(R.id.btn_time2);
@@ -36,19 +39,23 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
         txtTime1 = (EditText) findViewById(R.id.start_time);
         txtTime2 = (EditText) findViewById(R.id.end_time);
         phoneNumber = (EditText) findViewById(R.id.contactNum);
-        txtVenue = (EditText) findViewById(R.id.venueID);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker1.setOnClickListener(this);
         btnTimePicker2.setOnClickListener(this);
-        //btnSubmit.setOnClickListener(this);
+
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ReservationActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.venues));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        venuelist.setAdapter(myAdapter);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Work work1 = new Work();
 
                 try {
-                    work1 = new Work(-1, phoneNumber.getText().toString(), txtVenue.getText().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
+                    //work1 = new Work(-1, phoneNumber.getText().toString(), txtVenue.getText().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
+                    work1 = new Work(-1, phoneNumber.getText().toString(), venuelist.getSelectedItem().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
 
                     Toast.makeText(ReservationActivity.this, work1.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
