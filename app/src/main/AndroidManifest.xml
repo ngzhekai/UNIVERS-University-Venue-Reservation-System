@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityVenueManagementSystem">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewReservationActivity"
             android:exported="true" />
         <activity android:name=".MainActivity" />

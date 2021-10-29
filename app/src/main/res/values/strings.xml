@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">University Venue Management System</string>
-    
+
     <string-array name="venues">
         <item>Hall1</item>
         <item>Lab2</item>

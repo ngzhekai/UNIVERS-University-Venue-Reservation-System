@@ -109,6 +109,48 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //
 //    }
 
+    public List<Work> searchEveryone(String venue) {
+        List<Work> returnList = new ArrayList<>();
+        String queryString;
+        if (UserId.toString().equals("admin")) {
+            // get data from the database
+            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_3 + " = " + "'" + venue + "'";
+        }else{
+            // get data from the database
+            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'" + " AND " + COL_3 + " = '" + venue + "'" ;
+        }
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            //  loop through the cursor (result set) and create new work objects. Put them into the return list.
+            do {
+                int reservationID = cursor.getInt(0);
+                String phoneNumber = cursor.getString(1);
+                String venueID = cursor.getString(2);
+                String date = cursor.getString(3);
+                String startTime = cursor.getString(4);
+                String endTime = cursor.getString(5);
+                String userID = cursor.getString(6);
+
+                Work work = new Work(reservationID, phoneNumber, venueID, date, startTime, endTime, userID);
+                returnList.add(work);
+
+            } while (cursor.moveToNext());
+
+        }
+        else {
+            //  failure, do not add anything to the list.
+        }
+
+        //  close both the cursor and the db when done.
+        cursor.close();
+        db.close();
+        return returnList;
+
+    }
+
     public List<Work> getEveryone() {
         List<Work> returnList = new ArrayList<>();
         String queryString;
