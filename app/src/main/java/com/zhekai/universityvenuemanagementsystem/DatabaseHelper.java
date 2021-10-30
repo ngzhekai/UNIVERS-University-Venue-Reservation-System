@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //add reservation
-    public boolean addReservation (Work work1) {
+    public boolean addReservation(Work work1) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         //cv.put(COL_1, work.getReservation());
@@ -85,29 +85,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
-//    public List<Work> getAll() {
-//        try {
-//            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-//            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME, null);
-//            List<Work> works = new ArrayList<>();
-//            if (cursor.moveToNext()) {
-//                works = new ArrayList<Work>();
-//                do {
-//                    Work work = new Work();
-//                    work.setReservation(cursor.getInt(0));
-//                    work.setPhonenumber(cursor.getString(1));
-//                    work.setVenueID(cursor.getString(2));
-//                    work.setDate(cursor.getString(3));
-//                    work.setStartTime(cursor.getString(4));
-//                    work.setEndtime(cursor.getString(5));
-//                } while (cursor.moveToNext());
-//            }
-//            return works;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//
-//    }
 
     public List<Work> searchEveryone(String venue) {
         List<Work> returnList = new ArrayList<>();
@@ -115,9 +92,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (UserId.toString().equals("admin")) {
             // get data from the database
             queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_3 + " = " + "'" + venue + "'";
-        }else{
+        } else {
             // get data from the database
-            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'" + " AND " + COL_3 + " = '" + venue + "'" ;
+            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'" + " AND " + COL_3 + " = '" + venue + "'";
         }
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -139,8 +116,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
 
-        }
-        else {
+        } else {
             //  failure, do not add anything to the list.
         }
 
@@ -157,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (UserId.toString().equals("admin")) {
             // get data from the database
             queryString = "SELECT * FROM " + TABLE_NAME;
-        }else{
+        } else {
             // get data from the database
             queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'";
         }
@@ -183,8 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
 
-        }
-        else {
+        } else {
             //  failure, do not add anything to the list.
         }
 

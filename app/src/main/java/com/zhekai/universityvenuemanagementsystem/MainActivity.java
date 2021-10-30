@@ -6,12 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,14 +45,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Signing Out...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), LoginActivity.class);
                 startActivity(intent);
-                finish(); // finish is to make sure it ends the current activity to prevent user from clicking the return button.
+                finish(); // finish is to make sure it ends the current activity to prevent
+                // user from clicking the return button.
             }
         });
 
         btnSearchReservation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(view.getContext(), SearchActivity.class);
+                Intent intent = new Intent(view.getContext(), SearchActivity.class);
                 startActivity(intent);
             }
         });

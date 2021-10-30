@@ -3,7 +3,6 @@ package com.zhekai.universityvenuemanagementsystem;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,23 +32,25 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("admin") && passcode.getText().toString().equals("1234")){
-                    Toast.makeText(getApplicationContext(), "Signing In...", Toast.LENGTH_SHORT).show();
+                if (username.getText().toString().equals("admin") && passcode.getText().toString()
+                        .equals("1234")) {
+                    Toast.makeText(getApplicationContext(),
+                            "Signing In...", Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "Sign In Successfully!");
                     UserId = username.getText().toString();
                     startActivity(intent);
                     finish();
-                }
-                else if (username.getText().toString().equals("student1") && passcode.getText().toString().equals("1234"))
-                {
-                    Toast.makeText(getApplicationContext(), "Signing In...", Toast.LENGTH_SHORT).show();
+                } else if (username.getText().toString().equals("student1") && passcode.getText()
+                        .toString().equals("1234")) {
+                    Toast.makeText(getApplicationContext(), "Signing In...",
+                            Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "Sign In Successfully!");
                     UserId = username.getText().toString();
                     startActivity(intent);
                     finish();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Sign In Failed!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sign In Failed!",
+                            Toast.LENGTH_SHORT).show();
                     Log.i(TAG, "Sign In Denied!");
                 }
             }

@@ -27,15 +27,6 @@ public class Work {
 
     @Override
     public String toString() {
-//        return "Work{" +
-//                "reservation=" + reservation +
-//                ", phonenumber=" + phonenumber +
-//                ", venueID='" + venueID + '\'' +
-//                ", date='" + date + '\'' +
-//                ", startTime='" + startTime + '\'' +
-//                ", endtime='" + endtime + '\'' +
-//                ", username='" + username + '\'' +
-//                '}';
 
         return "\n\nReservation ID: " + reservation +
                 "\n\nPhone Number: " + phonenumber +

@@ -1,7 +1,6 @@
 package com.zhekai.universityvenuemanagementsystem;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,8 +13,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.Serializable;
-import java.util.List;
 
 public class ViewReservationActivity extends AppCompatActivity {
 
@@ -23,7 +20,6 @@ public class ViewReservationActivity extends AppCompatActivity {
     ListView lv_reservationList;
     ArrayAdapter workArrayAdapter;
     DatabaseHelper databaseHelper;
-    //RecyclerView lv_reservationList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +45,6 @@ public class ViewReservationActivity extends AppCompatActivity {
             }
         });
 
-//        lv_reservationList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Work clickedReservation = (Work) parent.getItemAtPosition(position);
-//                databaseHelper.deleteReservation(clickedReservation);
-//                ShowReservationOnListView(databaseHelper);
-//                Toast.makeText(ViewReservationActivity.this, "Deleted " + clickedReservation.toString(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
         lv_reservationList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

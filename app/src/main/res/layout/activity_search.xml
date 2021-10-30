@@ -2,25 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SearchActivity">
-
-<!--    <EditText-->
-<!--        android:id="@+id/searchVenueTxt"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="40dp"-->
-<!--        android:hint="Enter Venue ID"-->
-<!--        android:minHeight="48dp" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="20dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Spinner
             android:id="@+id/searchvenuelist"
@@ -33,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/design_default_color_secondary_variant"
-            android:text="Check"/>
+            android:text="Check" />
 
     </LinearLayout>
 
@@ -44,7 +36,6 @@
         android:layout_height="match_parent">
 
     </ListView>
-
 
 
 </LinearLayout>

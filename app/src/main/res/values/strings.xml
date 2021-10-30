@@ -2,14 +2,16 @@
     <string name="app_name">University Venue Management System</string>
 
     <string-array name="venues">
-        <item>Hall1</item>
-        <item>Lab2</item>
-        <item>Study Room 1</item>
-        <item>Lab1</item>
-        <item>DS Lab1</item>
-        <item>DS Lab2</item>
-        <item>DS Lab3</item>
-        <item>DS Lab4</item>
+        <item>CLC 2001</item>
+        <item>CDP 2002</item>
+        <item>Main Hall</item>
+        <item>Basketball Court</item>
+        <item>FOL 2003</item>
+        <item>FOB 2004</item>
+        <item>FET 2005</item>
+        <item>Smart Lab</item>
+        <item>Tennis Court</item>
+        <item>Futsal Court</item>
     </string-array>
 
 </resources>

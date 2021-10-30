@@ -57,7 +57,7 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
                     //work1 = new Work(-1, phoneNumber.getText().toString(), txtVenue.getText().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
                     work1 = new Work(-1, phoneNumber.getText().toString(), venuelist.getSelectedItem().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
 
-                    Toast.makeText(ReservationActivity.this, work1.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ReservationActivity.this, work1.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     Toast.makeText(ReservationActivity.this, "Error Creating Reservation! ", Toast.LENGTH_SHORT).show();
 
@@ -142,25 +142,6 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
                     }, mHour, mMinute, false);
             timePickerDialog.show();
         }
-//        if (v == btnSubmit) {
-//
-//            Work work1 = new Work();
-//
-//            try {
-//                work1 = new Work(-1, phoneNumber.getText().toString(), txtVenue.getText().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
-//
-//                Toast.makeText(this, work1.toString(), Toast.LENGTH_SHORT).show();
-//            } catch (Exception e) {
-//                Toast.makeText(this, "Error Creating Reservation! ", Toast.LENGTH_SHORT).show();
-//
-//            }
-//
-//            DatabaseHelper databaseHelper = new DatabaseHelper(this);
-//
-//            boolean success = databaseHelper.addReservation(work1);
-//
-//            Toast.makeText(ReservationActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
-//
-//        }
+
     }
 }

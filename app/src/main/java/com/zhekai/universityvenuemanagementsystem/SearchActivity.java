@@ -13,7 +13,6 @@ public class SearchActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     ListView lv_searchList;
-    //Spinner venuelist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

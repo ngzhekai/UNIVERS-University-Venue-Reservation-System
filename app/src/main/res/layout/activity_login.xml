@@ -14,11 +14,11 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
         android:gravity="center"
-        android:textSize="30sp"
-        android:textColor="@color/white"
         android:text="VENUE MANAGEMENT"
-        android:layout_marginBottom="56dp"/>
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/userId"
@@ -37,19 +37,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="28dp"
-        android:inputType="textPassword"
-        android:imeOptions="actionNext"
         android:hint="Password"
-        android:textSize="22sp"/>
+        android:imeOptions="actionNext"
+        android:inputType="textPassword"
+        android:textSize="22sp" />
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:text="Log In"
-        android:textStyle="bold"
         android:backgroundTint="@color/colorAccent"
+        android:text="Log In"
         android:textColor="@color/white"
+        android:textStyle="bold"
         tools:ignore="TextContrastCheck" />
 
     <LinearLayout
@@ -61,15 +61,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Don't have an account?"/>
+            android:text="Don't have an account?" />
 
         <Button
             android:id="@+id/signupBtn"
             android:layout_width="95dp"
             android:layout_height="wrap_content"
-            android:textAllCaps="false"
             android:background="?android:attr/selectableItemBackground"
-            android:text="Sign Up!"/>
+            android:text="Sign Up!"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
