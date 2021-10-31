@@ -57,9 +57,10 @@ public class ViewReservationActivity extends AppCompatActivity {
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                databaseHelper.deleteReservation(clickedReservation);
+                                boolean success = databaseHelper.deleteReservation(clickedReservation);
                                 ShowReservationOnListView(databaseHelper);
-                                Toast.makeText(ViewReservationActivity.this, "Deleted " + clickedReservation.toString(), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ViewReservationActivity.this, "Deleted " + clickedReservation.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ViewReservationActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
                             }
                         }).setNegativeButton("No", null).show();
                 return true;

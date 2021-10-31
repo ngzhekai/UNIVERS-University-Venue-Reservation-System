@@ -80,9 +80,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst())
-            return true;
-        else
             return false;
+        else
+            return true;
     }
 
 
