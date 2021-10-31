@@ -59,8 +59,10 @@ public class ViewReservationActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 boolean success = databaseHelper.deleteReservation(clickedReservation);
                                 ShowReservationOnListView(databaseHelper);
-                                //Toast.makeText(ViewReservationActivity.this, "Deleted " + clickedReservation.toString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(ViewReservationActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(ViewReservationActivity.this, "Deleted " +
+                                // clickedReservation.toString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ViewReservationActivity.this, "Success= "
+                                        + success, Toast.LENGTH_SHORT).show();
                             }
                         }).setNegativeButton("No", null).show();
                 return true;
@@ -77,9 +79,9 @@ public class ViewReservationActivity extends AppCompatActivity {
     }
 
     private void ShowReservationOnListView(DatabaseHelper databaseHelper1) {
-        workArrayAdapter = new ArrayAdapter<Work>(ViewReservationActivity.this, android.R.layout.simple_list_item_1, databaseHelper1.getEveryone());
+        workArrayAdapter = new ArrayAdapter<Work>(ViewReservationActivity.this,
+                android.R.layout.simple_list_item_1, databaseHelper1.getEveryone());
         lv_reservationList.setAdapter(workArrayAdapter);
     }
-
 
 }

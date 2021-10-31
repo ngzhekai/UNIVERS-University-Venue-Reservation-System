@@ -32,27 +32,34 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("admin") && passcode.getText().toString()
-                        .equals("1234")) {
-                    Toast.makeText(getApplicationContext(),
-                            "Signing In...", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Sign In Successfully!");
-                    UserId = username.getText().toString();
-                    startActivity(intent);
-                    finish();
-                } else if (username.getText().toString().equals("student1") && passcode.getText()
-                        .toString().equals("1234")) {
-                    Toast.makeText(getApplicationContext(), "Signing In...",
+                try {
+                    if (username.getText().toString().equals("admin") && passcode.getText()
+                            .toString().equals("1234")) {
+                        Toast.makeText(getApplicationContext(),
+                                "Signing In...", Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "Sign In Successfully!");
+                        UserId = username.getText().toString();
+                        startActivity(intent);
+                        finish();
+                    } else if (username.getText().toString().equals("student1") && passcode
+                            .getText().toString().equals("1234")) {
+                        Toast.makeText(getApplicationContext(), "Signing In...",
+                                Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "Sign In Successfully!");
+                        UserId = username.getText().toString();
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Sign In Failed!",
+                                Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "Sign In Denied!");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Something Went Wrong..",
                             Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Sign In Successfully!");
-                    UserId = username.getText().toString();
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sign In Failed!",
-                            Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Sign In Denied!");
                 }
+
             }
         });
 

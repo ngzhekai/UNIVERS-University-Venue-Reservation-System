@@ -44,7 +44,8 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
         btnTimePicker1.setOnClickListener(this);
         btnTimePicker2.setOnClickListener(this);
 
-        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ReservationActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.venues));
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(ReservationActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.venues));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         venuelist.setAdapter(myAdapter);
 
@@ -54,12 +55,14 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
                 Work work1 = new Work();
 
                 try {
-                    //work1 = new Work(-1, phoneNumber.getText().toString(), txtVenue.getText().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
-                    work1 = new Work(-1, phoneNumber.getText().toString(), venuelist.getSelectedItem().toString(), txtDate.getText().toString(), txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
+                    work1 = new Work(-1, phoneNumber.getText().toString(),
+                            venuelist.getSelectedItem().toString(), txtDate.getText().toString(),
+                            txtTime1.getText().toString(), txtTime2.getText().toString(), UserId);
 
                     //Toast.makeText(ReservationActivity.this, work1.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Toast.makeText(ReservationActivity.this, "Error Creating Reservation! ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservationActivity.this,
+                            "Error Creating Reservation! ", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -67,7 +70,8 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
 
                 boolean success = databaseHelper.addReservation(work1);
 
-                Toast.makeText(ReservationActivity.this, "Success= " + success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ReservationActivity.this, "Success= " + success,
+                        Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(intent);

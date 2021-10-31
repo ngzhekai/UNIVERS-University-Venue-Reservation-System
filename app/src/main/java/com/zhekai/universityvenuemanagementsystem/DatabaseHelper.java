@@ -5,8 +5,10 @@ import static com.zhekai.universityvenuemanagementsystem.LoginActivity.UserId;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -27,34 +29,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null,
+                1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement = "CREATE TABLE " + TABLE_NAME + " (" +
-                COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL_2 + " TEXT NOT NULL, " +
-                COL_3 + " TEXT NOT NULL, " +
-                COL_4 + " TEXT NOT NULL, " +
-                COL_5 + " TEXT NOT NULL, " +
-                COL_6 + " TEXT NOT NULL, " +
-                COL_7 + " TEXT NOT NULL)";
+        try {
+            String createTableStatement = "CREATE TABLE " + TABLE_NAME + " (" +
+                    COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    COL_2 + " TEXT NOT NULL, " +
+                    COL_3 + " TEXT NOT NULL, " +
+                    COL_4 + " TEXT NOT NULL, " +
+                    COL_5 + " TEXT NOT NULL, " +
+                    COL_6 + " TEXT NOT NULL, " +
+                    COL_7 + " TEXT NOT NULL)";
 
+            db.execSQL(createTableStatement);
 
-        db.execSQL(createTableStatement);
+        } catch (SQLException e) {
+            e.printStackTrace(); //something went wrong creating database
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     //add reservation
     public boolean addReservation(Work work1) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        //cv.put(COL_1, work.getReservation());
+        //cv.put(COL_1, work.getReservation()); // since autoincrement
         cv.put(COL_2, work1.getPhonenumber());
         cv.put(COL_3, work1.getVenueID());
         cv.put(COL_4, work1.getDate());
@@ -88,84 +94,93 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<Work> searchEveryone(String venue) {
         List<Work> returnList = new ArrayList<>();
-        String queryString;
-        if (UserId.toString().equals("admin")) {
-            // get data from the database
-            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_3 + " = " + "'" + venue + "'";
-        } else {
-            // get data from the database
-            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'" + " AND " + COL_3 + " = '" + venue + "'";
+        try {
+            String queryString;
+            if (UserId.toString().equals("admin")) {
+                // get data from the database
+                queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_3 + " = " + "'" + venue + "'";
+            } else {
+                // get data from the database
+                queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'" + " AND " + COL_3 + " = '" + venue + "'";
+            }
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.rawQuery(queryString, null);
+
+            if (cursor.moveToFirst()) {
+                //  loop through the cursor (result set) and create new work objects. Put them into the return list.
+                do {
+                    int reservationID = cursor.getInt(0);
+                    String phoneNumber = cursor.getString(1);
+                    String venueID = cursor.getString(2);
+                    String date = cursor.getString(3);
+                    String startTime = cursor.getString(4);
+                    String endTime = cursor.getString(5);
+                    String userID = cursor.getString(6);
+
+                    Work work = new Work(reservationID, phoneNumber, venueID, date, startTime, endTime, userID);
+                    returnList.add(work);
+
+                } while (cursor.moveToNext());
+
+            } else {
+                //  failure, do not add anything to the list.
+            }
+
+            //  close both the cursor and the db when done.
+            cursor.close();
+            db.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(queryString, null);
-
-        if (cursor.moveToFirst()) {
-            //  loop through the cursor (result set) and create new work objects. Put them into the return list.
-            do {
-                int reservationID = cursor.getInt(0);
-                String phoneNumber = cursor.getString(1);
-                String venueID = cursor.getString(2);
-                String date = cursor.getString(3);
-                String startTime = cursor.getString(4);
-                String endTime = cursor.getString(5);
-                String userID = cursor.getString(6);
-
-                Work work = new Work(reservationID, phoneNumber, venueID, date, startTime, endTime, userID);
-                returnList.add(work);
-
-            } while (cursor.moveToNext());
-
-        } else {
-            //  failure, do not add anything to the list.
-        }
-
-        //  close both the cursor and the db when done.
-        cursor.close();
-        db.close();
         return returnList;
-
     }
 
     public List<Work> getEveryone() {
         List<Work> returnList = new ArrayList<>();
-        String queryString;
-        if (UserId.toString().equals("admin")) {
-            // get data from the database
-            queryString = "SELECT * FROM " + TABLE_NAME;
-        } else {
-            // get data from the database
-            queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'";
+        try {
+            String queryString;
+            if (UserId.toString().equals("admin")) {
+                // get data from the database
+                queryString = "SELECT * FROM " + TABLE_NAME;
+            } else {
+                // get data from the database
+                queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_7 + " = " + "'" + UserId + "'";
+            }
+
+            SQLiteDatabase db = this.getReadableDatabase();
+
+            Cursor cursor = db.rawQuery(queryString, null);
+
+            if (cursor.moveToFirst()) {
+                //  loop through the cursor (result set) and create new work objects. Put them into the return list.
+                do {
+                    int reservationID = cursor.getInt(0);
+                    String phoneNumber = cursor.getString(1);
+                    String venueID = cursor.getString(2);
+                    String date = cursor.getString(3);
+                    String startTime = cursor.getString(4);
+                    String endTime = cursor.getString(5);
+                    String userID = cursor.getString(6);
+
+                    Work work = new Work(reservationID, phoneNumber, venueID, date, startTime, endTime, userID);
+                    returnList.add(work);
+
+                } while (cursor.moveToNext());
+
+            } else {
+                //  failure, do not add anything to the list.
+            }
+
+            //  close both the cursor and the db when done.
+            cursor.close();
+            db.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.rawQuery(queryString, null);
-
-        if (cursor.moveToFirst()) {
-            //  loop through the cursor (result set) and create new work objects. Put them into the return list.
-            do {
-                int reservationID = cursor.getInt(0);
-                String phoneNumber = cursor.getString(1);
-                String venueID = cursor.getString(2);
-                String date = cursor.getString(3);
-                String startTime = cursor.getString(4);
-                String endTime = cursor.getString(5);
-                String userID = cursor.getString(6);
-
-                Work work = new Work(reservationID, phoneNumber, venueID, date, startTime, endTime, userID);
-                returnList.add(work);
-
-            } while (cursor.moveToNext());
-
-        } else {
-            //  failure, do not add anything to the list.
-        }
-
-        //  close both the cursor and the db when done.
-        cursor.close();
-        db.close();
         return returnList;
+
     }
 }
