@@ -1,75 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/login_bg"
-    android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="50dp"
-    android:paddingRight="50dp"
     tools:context=".LoginActivity">
 
-    <TextView
-
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:gravity="center"
-        android:text="VENUE MANAGEMENT"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
-
-    <EditText
-        android:id="@+id/userId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Username"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="28dp"
-        android:hint="Password"
-        android:imeOptions="actionNext"
-        android:inputType="textPassword"
-        android:textSize="22sp" />
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"
-        android:text="Log In"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        tools:ignore="TextContrastCheck" />
+        android:layout_height="300dp"
+        android:src="@drawable/loginlogo"/>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:background="@drawable/login_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/userId"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Don't have an account?" />
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Username"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:textSize="22sp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="28dp"
+            android:hint="Password"
+            android:imeOptions="actionNext"
+            android:inputType="textPassword"
+            android:textSize="22sp" />
 
         <Button
-            android:id="@+id/signupBtn"
-            android:layout_width="95dp"
+            android:id="@+id/loginBtn"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:text="Sign Up!"
-            android:textAllCaps="false" />
+            android:backgroundTint="@color/colorAccent"
+            android:text="Log In"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Don't have an account?" />
+
+            <Button
+                android:id="@+id/signupBtn"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="Sign Up!"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
