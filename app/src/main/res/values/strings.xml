@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">University Venue Management System</string>
+    <string name="app_name">UNIVERS</string>
 
     <string-array name="venues">
         <item>CLC 2001</item>
