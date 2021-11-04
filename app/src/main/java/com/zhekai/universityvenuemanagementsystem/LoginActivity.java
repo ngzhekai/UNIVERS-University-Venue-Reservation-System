@@ -33,34 +33,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    if (username.getText().toString().equals("admin") && passcode.getText()
-                            .toString().equals("1234")) {
-                        Toast.makeText(getApplicationContext(),
-                                "Signing In...", Toast.LENGTH_SHORT).show();
-                        Log.i(TAG, "Sign In Successfully!");
-                        UserId = username.getText().toString();
+                    if (loginCheck(username.getText().toString())) {
+                        signInMessage(UserId, loginCheck());
                         startActivity(intent);
                         finish();
-                    } else if (username.getText().toString().equals("student1") && passcode
-                            .getText().toString().equals("1234")) {
-                        Toast.makeText(getApplicationContext(), "Signing In...",
-                                Toast.LENGTH_SHORT).show();
-                        Log.i(TAG, "Sign In Successfully!");
-                        UserId = username.getText().toString();
-                        startActivity(intent);
-                        finish();
-                    } else if (username.getText().toString().equals("student2") && passcode
-                            .getText().toString().equals("1234")) {
-                        Toast.makeText(getApplicationContext(), "Signing In...",
-                                Toast.LENGTH_SHORT).show();
-                        Log.i(TAG, "Sign In Successfully!");
-                        UserId = username.getText().toString();
-                        startActivity(intent);
-                        finish();
+
                     } else {
-                        Toast.makeText(getApplicationContext(), "Sign In Failed!",
-                                Toast.LENGTH_SHORT).show();
-                        Log.i(TAG, "Sign In Denied!");
+                        signInMessage(UserId, loginCheck());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -70,6 +49,52 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    // polymorphism
+    private boolean loginCheck() {
+        if (username.getText().toString().equals("admin") && passcode.getText()
+                .toString().equals("1234") ||
+                username.getText().toString().equals("student1") && passcode.getText()
+                        .toString().equals("1234") ||
+                username.getText().toString().equals("student2") && passcode.getText()
+                        .toString().equals("1234")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // polymorphism
+    private boolean loginCheck(String UserID) {
+        if (username.getText().toString().equals("admin") && passcode.getText()
+                .toString().equals("1234") ||
+                username.getText().toString().equals("student1") && passcode.getText()
+                        .toString().equals("1234") ||
+                username.getText().toString().equals("student2") && passcode.getText()
+                        .toString().equals("1234")) {
+            UserId = UserID;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    private void signInMessage(String UserID, boolean state) {
+        if (state){
+            Toast.makeText(getApplicationContext(),
+                    "Signing In...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),
+                    UserID + " Sign in Successfully!", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Sign In Successfully!");
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Sign In Failed!",
+                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Your User ID and/or Password are invalid.",
+                    Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Sign In Denied!");
+        }
 
     }
 }

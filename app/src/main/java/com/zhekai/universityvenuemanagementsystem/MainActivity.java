@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "Signing Out...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Sign Out Successfully!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), LoginActivity.class);
                 startActivity(intent);
                 finish(); // finish is to make sure it ends the current activity to prevent
