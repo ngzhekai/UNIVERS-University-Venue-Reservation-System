@@ -1,4 +1,4 @@
-# University-Venue-Management-System
+# University-Venue-Management-System (UNIVERS)
 
 <strong> *Newly Added Codes will always be in the development (aka dev) branch! </strong>
 
