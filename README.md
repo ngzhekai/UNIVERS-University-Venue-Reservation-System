@@ -1,4 +1,4 @@
-# University-Venue-Management-System (UNIVERS)
+<h1 align="center"> University-Venue-Management-System (UNIVERS) </h1>
 
 <strong> *Newly Added Codes will always be in the development (aka dev) branch! </strong>
 
@@ -16,18 +16,13 @@
 <br>
 
 <h2>Screenshots</h2>
-
-![image](https://user-images.githubusercontent.com/61905056/140333964-31bd52f0-f18e-4d14-9a56-6e26401ef2df.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140334007-e957c501-84df-42ee-af2a-cfb9cf8955e9.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140335795-7b595c1d-c9cf-43f0-b043-bd7fa6a6c9e9.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140335823-bfb6d697-3cb4-474d-b0a7-4235e22a8150.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140335840-f21111f2-81bc-4ff8-bdad-3ccd21620e39.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140335865-6763c317-9dbb-484b-bed2-9f87ebabfd81.png)
-
-![image](https://user-images.githubusercontent.com/61905056/140335880-bfbe7638-9316-49ea-9a35-ab0482c780bc.png)
+<p align="center"> 
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538709-e8b951d8-f171-46a0-b026-e3a6f232b804.png" alt="Login Interface">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538440-1bc719ed-e766-4be3-915a-3b1a3b9f3743.png" alt="Menu Interface">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538345-de8936bd-3f00-4d99-8478-09f99f7c6b0e.png" alt="Reservation Interface">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538572-22136cf1-3f12-4a3f-a177-5e63546c2791.png" alt="Calendar Picker Dialog">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538590-9c095c21-4e1d-4f4d-9ad9-c48a86d53039.png" alt="List Reservation Interface">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538605-e6defe44-ca7e-40b5-91a4-e31e58130bc0.png" alt="Delete Reservation Dialog">
+  <img width="match_content" src="https://user-images.githubusercontent.com/61905056/140538621-1b35570f-39a6-43ea-8a3e-a71a533db4e9.png" alt="Sort Reservation According to Venue">
+</p>
 
