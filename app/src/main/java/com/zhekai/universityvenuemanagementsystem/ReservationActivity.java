@@ -8,12 +8,14 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -22,7 +24,8 @@ import java.util.Calendar;
 public class ReservationActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btnDatePicker, btnTimePicker1, btnTimePicker2, btnSubmit;
-    EditText txtDate, txtTime1, txtTime2, phoneNumber;
+    EditText phoneNumber;
+    TextView txtDate, txtTime1, txtTime2;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
     @Override
@@ -35,10 +38,12 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
         btnTimePicker1 = (Button) findViewById(R.id.btn_time);
         btnTimePicker2 = (Button) findViewById(R.id.btn_time2);
         btnSubmit = (Button) findViewById(R.id.btn_Submit);
-        txtDate = (EditText) findViewById(R.id.in_date);
-        txtTime1 = (EditText) findViewById(R.id.start_time);
-        txtTime2 = (EditText) findViewById(R.id.end_time);
+        txtDate = (TextView) findViewById(R.id.in_date);
+        txtTime1 = (TextView) findViewById(R.id.start_time);
+        txtTime2 = (TextView) findViewById(R.id.end_time);
         phoneNumber = (EditText) findViewById(R.id.contactNum);
+
+        phoneNumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher("MY"));
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker1.setOnClickListener(this);
@@ -104,6 +109,8 @@ public class ReservationActivity extends AppCompatActivity implements View.OnCli
 
                         }
                     }, mYear, mMonth, mDay);
+            //this line below to ignore input for past date.
+            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis());
             datePickerDialog.show();
         }
         if (v == btnTimePicker1) {
