@@ -3,7 +3,6 @@ package com.zhekai.universityvenuemanagementsystem;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class LoginActivity extends AppCompatActivity {
 
 
     private EditText username, passcode;
+    static public String UserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +32,69 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("admin") && passcode.getText().toString().equals("1234")){
-                    Toast.makeText(getApplicationContext(), "Signing In...", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Sign In Successfully!");
-                    startActivity(intent);
+                try {
+                    if (loginCheck(username.getText().toString())) {
+                        signInMessage(UserId, loginCheck());
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        signInMessage(UserId, loginCheck());
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Something Went Wrong..",
+                            Toast.LENGTH_SHORT).show();
                 }
-                else{
-                    Toast.makeText(getApplicationContext(), "Sign In Failed!", Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "Sign In Denied!");
-                }
+
             }
         });
+    }
+
+    // polymorphism
+    private boolean loginCheck() {
+        if (username.getText().toString().equals("admin") && passcode.getText()
+                .toString().equals("1234") ||
+                username.getText().toString().equals("student1") && passcode.getText()
+                        .toString().equals("1234") ||
+                username.getText().toString().equals("student2") && passcode.getText()
+                        .toString().equals("1234")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // polymorphism
+    private boolean loginCheck(String UserID) {
+        if (username.getText().toString().equals("admin") && passcode.getText()
+                .toString().equals("1234") ||
+                username.getText().toString().equals("student1") && passcode.getText()
+                        .toString().equals("1234") ||
+                username.getText().toString().equals("student2") && passcode.getText()
+                        .toString().equals("1234")) {
+            UserId = UserID;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    private void signInMessage(String UserID, boolean state) {
+        if (state){
+            Toast.makeText(getApplicationContext(),
+                    "Signing In...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),
+                    UserID + " Sign in Successfully!", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Sign In Successfully!");
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Sign In Failed!",
+                    Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Your User ID and/or Password are invalid.",
+                    Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Sign In Denied!");
+        }
 
     }
 }
