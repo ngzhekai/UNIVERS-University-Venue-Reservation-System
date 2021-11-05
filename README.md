@@ -1,6 +1,9 @@
+
+<p align="center"><img width="match_parent" src="https://user-images.githubusercontent.com/61905056/140544115-bc2e6d9a-92ee-47ee-9974-c38478012cdc.png" alt="App Logo"></p>
 <h1 align="center"> University-Venue-Management-System (UNIVERS) </h1>
 
 <strong> *Newly Added Codes will always be in the development (aka dev) branch! </strong>
+<br>
 
 - [x] Front End only
 - [ ] Back End
